@@ -10,7 +10,7 @@ namespace Countries;
 
 class US
 {
-    private $strict = true;
+    private bool $strict = true;
     private $states;
 
     public function __construct($strict = true)
@@ -28,7 +28,10 @@ class US
         return $this->states;
     }
 
-    public function getTypicalStates()
+    /**
+     * @return mixed[]
+     */
+    public function getTypicalStates(): array
     {
         $return = [];
 

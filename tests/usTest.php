@@ -5,25 +5,25 @@ use Countries\US;
 
 class usTest extends TestCase {
 
-	public function testConstruction()
+	public function testConstruction(): void
 	{
 		new US();
 		$this->assertTrue(true);
 	}
 
-	public function testExceptionConstruction()
+	public function testExceptionConstruction(): void
 	{
 		$this->expectException(Exception::class);
 		new US('fail - string');
 	}
 
-	public function testExceptionConstruction2()
+	public function testExceptionConstruction2(): void
 	{
 		$this->expectException(Exception::class);
 		new US(['fail', 'array']);
 	}
 
-	public function testOCONUS1()
+	public function testOCONUS1(): void
 	{
 		$stateTest = new US();
 
@@ -32,7 +32,7 @@ class usTest extends TestCase {
 		$this->assertTrue(false === $stateTest->isCONUS('AK'));
 	}
 
-	public function testOCONUS2()
+	public function testOCONUS2(): void
 	{
 		$stateTest = new US();
 
@@ -40,7 +40,7 @@ class usTest extends TestCase {
 		$this->assertTrue(false === $stateTest->isCONUS('HI'));
 	}
 
-	public function testCONUS()
+	public function testCONUS(): void
 	{
 		$stateTest = new US();
 
@@ -48,21 +48,21 @@ class usTest extends TestCase {
 		$this->assertTrue($stateTest->isCONUS('AL'));
 	}
 
-	public function testBadCONUS()
+	public function testBadCONUS(): void
 	{
 		$stateTest = new US();
 
 		$this->assertTrue(null === $stateTest->isCONUS('Bad'));
 	}
 
-	public function testGetAllStates()
+	public function testGetAllStates(): void
 	{
 		$states = new US();
 
 		$this->assertGreaterThan(50, $states->getAllStates());
 	}
 
-	public function testTypicalStates()
+	public function testTypicalStates(): void
 	{
 		$stateTest = new US();
 
@@ -72,7 +72,7 @@ class usTest extends TestCase {
 		$this->assertCount(54, $stateTest->getTypicalStates());
 	}
 
-	public function getInvalidState()
+	public function getInvalidState(): void
 	{
 		$stateTest = new US();
 

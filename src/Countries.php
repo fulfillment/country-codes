@@ -351,7 +351,7 @@ class Countries
      *
      * @return array
      */
-    private function sort($array): array
+    private function sort(array $array): array
     {
         $return = [];
         $key    = $this->sortOrder;
@@ -372,7 +372,7 @@ class Countries
      *
      * @return array
      */
-    private function stripKey($array): array
+    private function stripKey(array $array): array
     {
         $return = [];
 

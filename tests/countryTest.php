@@ -6,13 +6,13 @@ use Countries\Countries;
 class countryTest extends TestCase
 {
 
-    public function testConstruction()
+    public function testConstruction(): void
     {
         new Countries();
         $this->assertTrue(true);
     }
 
-    public function testAltSpellings()
+    public function testAltSpellings(): void
     {
         $altSpellings = include 'src/altSpellings.php';
 
@@ -31,7 +31,7 @@ class countryTest extends TestCase
         }
     }
 
-    public function testGetCountry1()
+    public function testGetCountry1(): void
     {
         $countries = new Countries();
         $results   = $countries->getCountry('United States');
@@ -39,7 +39,7 @@ class countryTest extends TestCase
         $this->assertEquals('US', $results['iso2']);
     }
 
-    public function testGetCountry2()
+    public function testGetCountry2(): void
     {
         $countries = new Countries();
 
@@ -59,7 +59,7 @@ class countryTest extends TestCase
         $this->assertEquals('SX', $results['iso2']);
     }
 
-    public function testGetCountry3()
+    public function testGetCountry3(): void
     {
         $countries = new Countries();
 
@@ -71,7 +71,7 @@ class countryTest extends TestCase
 
     }
 
-    public function testInvalidGetCountry()
+    public function testInvalidGetCountry(): void
     {
         $countries = new Countries();
 
@@ -79,7 +79,7 @@ class countryTest extends TestCase
         $this->assertNull($countries->getCountry(5000));
     }
 
-    public function testGetAllCountries()
+    public function testGetAllCountries(): void
     {
         $countries = new Countries();
         $results   = $countries->getAllCountries();
@@ -87,7 +87,7 @@ class countryTest extends TestCase
         $this->assertCount(250, $results);
     }
 
-    public function testGetAllCountryNames()
+    public function testGetAllCountryNames(): void
     {
         $countries = new Countries();
         $results   = $countries->getAllCountryNames();
@@ -96,7 +96,7 @@ class countryTest extends TestCase
         $this->assertContains('United States', $results);
     }
 
-    public function testGetCountryFromIso()
+    public function testGetCountryFromIso(): void
     {
         $countries    = new Countries();
         $resultString = $countries->getCountryFromISO('840');
@@ -106,7 +106,7 @@ class countryTest extends TestCase
         $this->assertEquals('840', $resultNum['isoNum']);
     }
 
-    public function testGetCountryFromIsoFail1()
+    public function testGetCountryFromIsoFail1(): void
     {
         $countries = new Countries();
 
@@ -115,7 +115,7 @@ class countryTest extends TestCase
         $countries->getCountryFromISO('TOO_Long');
     }
 
-    public function testGetCountryFromIsoFail2()
+    public function testGetCountryFromIsoFail2(): void
     {
         $countries = new Countries();
 
@@ -124,7 +124,7 @@ class countryTest extends TestCase
         $countries->getCountryFromISO(9999);
     }
 
-	public function testSortOrder()
+	public function testSortOrder(): void
 	{
 		$countries = new Countries();
 		$countries->setSort('capital');
@@ -133,14 +133,14 @@ class countryTest extends TestCase
 		$this->assertEquals('AE', $results[1]['iso2']);
 	}
 
-	public function testBadSortOrder()
+	public function testBadSortOrder(): void
 	{
 		$this->expectException(Exception::class);
 		$countries = new Countries();
 		$countries->setSort('bad');
 	}
 
-	public function testValidation()
+	public function testValidation(): void
 	{
 		$countries = new Countries();
 
@@ -151,7 +151,7 @@ class countryTest extends TestCase
 		$this->assertTrue($countries->validate('SX', 'Sint Maarten'));
 	}
 
-	public function testIsValid()
+	public function testIsValid(): void
 	{
 		$countries = new Countries();
 
@@ -159,14 +159,14 @@ class countryTest extends TestCase
 		$this->assertFalse($countries->valid('United Front of Alien Planets'));
 	}
 
-	public function testAssertion()
+	public function testAssertion(): void
 	{
 		$countries = new Countries();
 
 		$this->assertTrue($countries->assert('USA', 'United States'));
 	}
 
-	public function testAssertionFail()
+	public function testAssertionFail(): void
 	{
 		$this->expectException(Exception::class);
 
@@ -174,14 +174,14 @@ class countryTest extends TestCase
 		$countries->assert('ZZ', 'United States');
 	}
 
-	public function testAssertValid()
+	public function testAssertValid(): void
 	{
 		$countries = new Countries();
 
 		$this->assertTrue($countries->assertValid('United States'));
 	}
 
-	public function testAssertValidFail()
+	public function testAssertValidFail(): void
 	{
 		$this->expectException(Exception::class);
 
@@ -189,7 +189,7 @@ class countryTest extends TestCase
 		$countries->assertValid('Not A Country (yet)');
 	}
 
-	public function testAssertException()
+	public function testAssertException(): void
 	{
 		$this->expectException(Exception::class);
 
@@ -197,7 +197,7 @@ class countryTest extends TestCase
 		$countries->assert('TOO_LONG', 'United States');
 	}
 
-	public function testUSTerritories()
+	public function testUSTerritories(): void
 	{
 		$countries = new Countries();
 
@@ -214,7 +214,7 @@ class countryTest extends TestCase
 		$this->assertFalse($countries->isUSTerritory(''));
 	}
 
-	public function testLevenshteinMathOnInvalidIso()
+	public function testLevenshteinMathOnInvalidIso(): void
 	{
 		$countries = new Countries();
 

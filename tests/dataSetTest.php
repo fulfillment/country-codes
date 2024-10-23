@@ -5,7 +5,7 @@ use Countries\Countries;
 
 class dataSetTest extends TestCase {
 
-	public function testConstruction()
+	public function testConstruction(): void
 	{
 		$countries = new Countries();
 		$dataSet   = include 'dataSet.php';
